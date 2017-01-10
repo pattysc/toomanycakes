@@ -24,3 +24,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+<!-- 
+form tag request=POST 'google.com'
+params 'how do i make an egg'
+when i click this button. -->

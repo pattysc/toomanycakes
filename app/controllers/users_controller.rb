@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def index
-    
+    if logged_in?
+      redirect_to current_user
+    end
   end
 
   def new
@@ -11,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @user
+      redirect_to current_user
     else
       flash[:notice] = @user.errors.full_messages
       redirect_to new_user_path

@@ -1,0 +1,21 @@
+<h1>New Meal</h1>
+
+<%= form_for @meal do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :description %>
+<%= f.text_area :description %>
+
+<%= label_tag "Portions" %>
+<%= select_tag "meal[number]", options_for_select(1..10) %>
+
+<%= f.label :expiration %>
+<%= f.date_select :expiration %>
+
+<%= f.label :img_url %>
+<%= f.text_field :img_url %>
+
+<%= submit_tag "Create meal" %>
+<% end %>

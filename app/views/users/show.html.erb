@@ -3,14 +3,11 @@
 
 <br>
 
-<%= link_to "Edit", edit_user_path %>
+<% if current_user.id == @user.id %>
 
-<br><br>
+<%= link_to "All my claimed meals", users_path %>
 
-<p><%= link_to "Log Out", session_path, method: :delete %></p>
 <br>
-
-
 <h3>Groups</h3>
 <% @user.groups.each do |group| %>
   <%= link_to group.name, group_path(group) %>
@@ -22,3 +19,12 @@
     <%=link_to meal.name, meal_path(meal)  %>
   <% end %>
 <% end %>
+<br />
+
+<%= link_to "All my cooked meals", cook_path %>
+
+<% end %>
+
+<br><br><br>
+
+<p> <%= link_to "Edit", edit_user_path %> || <%= link_to "Log Out", session_path, method: :delete %></p>

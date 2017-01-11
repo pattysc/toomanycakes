@@ -1,14 +1,16 @@
 class MealsController < ApplicationController
 
+  before_action :authorize_user
+
   def show
     # @user = User.find(session[:user_id])
-    @user = User.all.first
+    @user = current_user
     @meal = Meal.find(params[:id])
   end
 
   def create
     @meal = Meal.new(meal_params)
-    @meal.cook_id = User.first.id
+    @meal.cook_id = current_user.id
 
     if @meal.save
       @meal.make_portions(params[:meal][:number])

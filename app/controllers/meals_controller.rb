@@ -11,7 +11,7 @@ class MealsController < ApplicationController
     @meal.cook_id = User.first.id
 
     if @meal.save
-      make_portions(@meal, params[:meal][:number])
+      @meal.make_portions(params[:meal][:number])
       redirect_to meal_path(@meal)
     else
       redirect_to new_meal_path
@@ -26,12 +26,6 @@ class MealsController < ApplicationController
 
   def meal_params
     params.require(:meal).permit(:name, :description, :expiration, :img_url, :cook_id)
-  end
-
-  def make_portions(meal, num)
-    num.to_i.times do
-      Portion.create(meal_id: meal.id)
-    end
   end
 
 end

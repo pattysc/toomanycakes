@@ -38,6 +38,19 @@ class GroupsController < ApplicationController
     end
   end
 
+  def quit
+    @group = Group.find(params[:group_id])
+    @user = User.find(session[:user_id])
+
+    @group.users.delete(@user)
+
+    # flash[:notice] = "You left the group.  Tears."
+
+    redirect_to group_path(@group)
+
+  end
+
+
 
   private
 

@@ -2,14 +2,31 @@
 
 <h2> <%= @group.name %> </h2>
 <br>
-Want to join this this group?<br />
 
-<%= form_tag ('/groups/join') do %>
+<% if !@group.current_user_a_member?(current_user) %>
+
+  Want to join this this group?<br>
+
+  <%= form_tag ('/groups/join') do %>
+
+  <%= hidden_field_tag "group_id", @group.id%>
+  <%= submit_tag "Join" %>
+
+  <% end %>
+
+
+<% else %>
+
+<%= form_tag ('/groups/quit') do %>
 
 <%= hidden_field_tag "group_id", @group.id%>
-<%= submit_tag "Join" %>
+<%= submit_tag "Rage Quit" %>
 
 <% end %>
+
+
+<% end %>
+
 
 <br>
 <h3>Roster</h3>

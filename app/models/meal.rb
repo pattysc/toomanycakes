@@ -11,7 +11,11 @@ class Meal < ApplicationRecord
   end
 
   def portions_all_taken?
-    portions(eater_id: nil).count > 0
+    if portions.where(eater_id: nil).count > 0
+      return false
+    else
+      true
+    end
   end
 
   def return_portions(num, user_id)

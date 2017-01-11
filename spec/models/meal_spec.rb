@@ -39,3 +39,5 @@ describe Meal do
   end
 
 end
+
+CHARTKICK GEM

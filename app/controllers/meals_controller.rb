@@ -1,5 +1,4 @@
 class MealsController < ApplicationController
-
   before_action :authorize_user
 
   def show

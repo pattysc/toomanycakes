@@ -32,12 +32,9 @@ describe Meal do
     expect(cookies.make_portions(6)).to eq(cookies.portions.count)
   end
 
-  it "can make delete of portions" do
-    6.times { Portion.create(meal_id: cookies.id) }
+  it "can tell if all portions are taken" do
+    3.times { Portion.create(meal_id: cookies.id, eater_id: david.id) }
 
-    expect(cookies.delete_portions(3)).to eq(cookies.portions.count)
+    expect(cookies).to be_portions_all_taken
   end
-
 end
-
-CHARTKICK GEM

@@ -31,3 +31,17 @@ end
 2.times do
   Portion.create(meal_id: chicken.id)
 end
+
+flatiron = Group.create(name: "Flatiron School")
+makeawish = Group.create(name: "Make-a-Wish")
+dogpark = Group.create(name: "Madison Square Dog Park")
+
+flatiron.users << patty
+flatiron.users << andrew
+flatiron.users << mo
+flatiron.users << david
+
+makeawish.users << david
+makeawish.users << mo
+
+dogpark.users << andrew

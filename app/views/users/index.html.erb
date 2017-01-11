@@ -1,10 +1,12 @@
 <h2> Claimed meals </h2>
 <% @meal_ids.each do |meal_id|%>
+
+
   <% @meal = Meal.find(meal_id) %>
   <b><p> <%= link_to "#{@meal.name}", @meal %> </p></b>
   <p> "<%= @meal.description %>" </p>
-  <p> <%= Portion.where(:meal_id => @meal.id, :eater_id => @user.id).count %> portion(s)</p>
-  <% @user = User.find(@meal.cook_id) %>
-  <p> claimed from <%= link_to "#{@user.name}", @user %> </a></p>
+  <p> <%= Portion.where(:meal_id => meal_id, :eater_id => @user.id).count %> portion(s)</p>
+  <% cook = User.find(@meal.cook_id) %>
+  <p> claimed from <%= link_to "#{cook.name}", cook %> </a></p>
   **********************
 <% end %>

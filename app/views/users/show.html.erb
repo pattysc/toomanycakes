@@ -5,16 +5,17 @@
 
 <% if current_user.id == @user.id %>
 
-  <%= link_to "All my claimed meals", claimed_meals_path %>
-  <br>
-  <%= link_to "All my cooked meals", cook_path %>
-  <br>
-  <br>
-  <%= link_to "Submit a new meal!", new_meal_path %>
-  <br>
-  <%= link_to "Make a new group!", new_group_path %>
+<%= link_to "All my claimed meals", claimed_meals_path %>
+<br />
+<%= link_to "All my cooked meals", cook_path %>
+<br /><br />
+<%= link_to "Submit a new meal!", new_meal_path %>
+<br />
+<%= link_to "Make a new group!", new_group_path %>
+<br />
+<%= link_to "See all groups!", groups_path %>
 
-  <br>
+<br><br />
   ===================================
   <div>
     <h2> My Groups </h2>
@@ -44,6 +45,14 @@
   <% end %>
 
 
+<br><br><br>
+
+<p> <%= link_to "Edit", edit_user_path %> || <%= link_to "Log Out", logout_path %></p>
+
+<% else %>
+
+<p> <%= link_to "Log Out", logout_path %></p>
+
+
 <% end %>
 
-<br><br><br>

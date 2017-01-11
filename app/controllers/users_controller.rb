@@ -8,9 +8,6 @@ class UsersController < ApplicationController
 
   def claimed_meals
     @user = current_user
-    # @meal_ids = Portion.joins(:meal).where(eater_id: @user.id).pluck(:meal_id).uniq
-    # @portions = Portion.includes(:meals).where(eater_id: current_user.id).group(:meal_id).count
-
     @meal_ids = @user.portions.pluck(:meal_id).uniq
   end
 

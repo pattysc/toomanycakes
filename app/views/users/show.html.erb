@@ -5,17 +5,17 @@
 
 <% if current_user.id == @user.id %>
 
-<%= link_to "All my claimed meals", claimed_meals_path %>
-<br />
-<%= link_to "All my cooked meals", cook_path %>
-<br /><br />
-<%= link_to "Submit a new meal!", new_meal_path %>
-<br />
-<%= link_to "Make a new group!", new_group_path %>
-<br />
-<%= link_to "See all groups!", groups_path %>
+  <%= link_to "All my claimed meals", claimed_meals_path %>
+  <br />
+  <%= link_to "All my cooked meals", cook_path %>
+  <br /><br />
+  <%= link_to "Submit a new meal!", new_meal_path %>
+  <br />
+  <%= link_to "Make a new group!", new_group_path %>
+  <br />
+  <%= link_to "See all groups!", groups_path %>
 
-<br><br />
+  <br><br />
   ===================================
   <div>
     <h2> My Groups </h2>
@@ -27,32 +27,17 @@
           <li> <%=link_to meal.name, meal_path(meal)  %> </li>
         <% end %>
       </ul>
-
-
     <% end %>
   </div>
 
   <p> <%= link_to "Edit", edit_user_path %> || <%= link_to "Log Out", session_path, method: :delete %></p>
 
-
-  <% else %>
-
+<% else %>
   <h2> Groups </h2>
 
   <% @user.groups.each do |group| %>
     <h3><%= link_to group.name, group_path(group) %></h3>
-
   <% end %>
 
-
-<br><br><br>
-
-<p> <%= link_to "Edit", edit_user_path %> || <%= link_to "Log Out", logout_path %></p>
-
-<% else %>
-
-<p> <%= link_to "Log Out", logout_path %></p>
-
-
+  <p> <%= link_to "Log Out", logout_path %></p>
 <% end %>
-

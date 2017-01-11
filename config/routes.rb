@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :groups, only: [:index, :show, :new, :create]
   post 'groups/join', to: 'groups#join', as: 'join'
+  post 'groups/quit', to: 'groups#quit', as: 'quit'
 
 
 

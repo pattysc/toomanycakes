@@ -1,7 +1,15 @@
 <h1>Create a new group</h1>
 
+<div id='form_container'>
 <%= form_for @group do |f| %>
+  <div>
  <%= f.label :name %>
  <%= f.text_field :name %>
+  </div>
+  <div>
+ <%= f.label :description %>
+ <%= f.text_field :description %>
+ </div>
  <%= f.submit "Create" %>
 <% end %>
+</div>

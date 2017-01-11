@@ -6,14 +6,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def index
+  def claimed_meals
     @user = current_user
     # @meal_ids = Portion.joins(:meal).where(eater_id: @user.id).pluck(:meal_id).uniq
     # @portions = Portion.includes(:meals).where(eater_id: current_user.id).group(:meal_id).count
 
     @meal_ids = @user.portions.pluck(:meal_id).uniq
-
-
   end
 
   def cook
@@ -49,6 +47,7 @@ class UsersController < ApplicationController
     if @user.valid?
       redirect_to current_user
     else
+      flash[:notice] = "User already exists"
       redirect_to edit_user_path(current_user)
     end
   end

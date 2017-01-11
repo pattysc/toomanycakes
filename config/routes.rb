@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #user
   resources :users
   get '/users/:id/cook', to: "users#cook", as: "cook"
+  get '/user/:id/claimed_meals', to: "users#claimed_meals", as: "claimed_meals"
   #sessions
   resources :sessions, only: [:create, :destroy]
 
@@ -23,4 +24,5 @@ Rails.application.routes.draw do
   get '/meals/:id', to: 'meals#show', as: "meal"
 
   post '/portions', to: 'portions#update'
+  post '/portions/return', to: 'portions#return', as: "return"
 end

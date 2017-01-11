@@ -1,7 +1,7 @@
 <%= flash[:notice] %>
 <h1> <%= @meal.name %> </h1> <br />
 
-<img src="<%= @meal.img_url %>" />
+<img src="<%= @meal.img_url %>" style='width: 100px' height='200px' />
 
 <h3> by <%= @user.name %> </h3> <br />
 
@@ -22,5 +22,4 @@ Want to claim this meal?<br />
 <%= hidden_field_tag "user_id", @user.id%>
 <%= hidden_field_tag "meal_id", @meal.id %>
 <%= submit_tag "Claim this meal!" %>
-
 <% end %>

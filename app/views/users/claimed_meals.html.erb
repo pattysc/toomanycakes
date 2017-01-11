@@ -6,14 +6,14 @@
   <b><p> <%= link_to "#{@meal.name}", @meal %> </p></b>
   <p> "<%= @meal.description %>" </p>
 
-  <p> <%= Portion.where(:meal_id => meal_id, :eater_id => @user.id).count %> portion(s)</p>
+  <p> <%= Portion.number_of_claimed_portions(meal_id, @user.id) %> portion(s)</p>
   <% cook = User.find(@meal.cook_id) %>
 
   <p> claimed from <%= link_to "#{cook.name}", cook %> </a></p>
 
   <%= form_tag('/portions/return') do %>
     <p> Return
-    <%= select_tag "number_returns", options_for_select(1..Portion.where(:meal_id => meal_id, :eater_id => @user.id).count) %>
+    <%= select_tag "number_returns", options_for_select(1..Portion.number_of_claimed_portions(meal_id, @user.id)) %>
     portion(s)
     <%= hidden_field_tag "id", @user.id%>
     <%= hidden_field_tag "meal_id", @meal.id %>

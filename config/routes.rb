@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   #root
-  root 'users#index'
+  root 'users#login'
   #user
   resources :users
+  get '/users/:id/cook', to: "users#cook", as: "cook"
   #sessions
   resources :sessions, only: [:create, :destroy]
 

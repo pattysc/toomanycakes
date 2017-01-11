@@ -1,0 +1,8 @@
+all the meals ive cooked
+
+<br> <br>
+
+<% @meals.each do |meal| %>
+  <%= link_to "#{meal.name}", meal %>
+  <br>
+<% end %>

@@ -3,8 +3,16 @@
 
 <br>
 
-<%= link_to "Edit", edit_user_path %>
+<% if current_user.id == @user.id %>
 
-<br><br>
+<%= link_to "All my claimed meals", users_path %>
 
-<p><%= link_to "Log Out", session_path, method: :delete %></p>
+<br />
+
+<%= link_to "All my cooked meals", cook_path %>
+
+<% end %>
+
+<br><br><br>
+
+<p> <%= link_to "Edit", edit_user_path %> || <%= link_to "Log Out", session_path, method: :delete %></p>

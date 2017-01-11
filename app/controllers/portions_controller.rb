@@ -12,7 +12,7 @@ class PortionsController < ApplicationController
   def set_eater_id(meal, num)
     num.to_i.times do
       portion = meal.portions.where(eater_id: nil).first
-      portion.eater_id = User.all.first.id #[:user_id]
+      portion.eater_id = current_user.id
       portion.save
     end
   end

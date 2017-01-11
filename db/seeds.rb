@@ -11,9 +11,9 @@ mo = User.create(name: "Mohammed", password: "4321", address: "NYC")
 david = User.create(name: "David", password: "1234", address: "NYC")
 andrew = User.create(name: "Andrew", password: "4321", address: "NYC")
 
-choc_cake = Meal.create(name: "Chocolate Cake", description: "Delicious chocolate cake with chocolate frosting", expiration: Date.today + 4, img_url: "http://i.imgur.com/6amXGTM.jpg", cook_id: patty.id)
-van_cake = Meal.create(name: "Vanilla Cake", description: "Delicious vanilla cake with vanilla frosting", expiration: Date.today + 1, img_url: "http://i.imgur.com/6amXGTM.jpg", cook_id: david.id)
-chilli = Meal.create(name: "Chilli", description: "Delicious chilli", expiration: Date.today + 3, img_url: "http://i.imgur.com/6amXGTM.jpg", cook_id: mo.id)
+choc_cake = Meal.create(name: "Chocolate Cake", description: "Delicious chocolate cake with chocolate frosting", expiration: Date.today + 4, img_url: "http://i.imgur.com/Vmcl79Z.jpg", cook_id: patty.id)
+van_cake = Meal.create(name: "Vanilla Cheesecake", description: "Delicious vanilla cheesecake with vanilla frosting", expiration: Date.today + 1, img_url: "http://i.imgur.com/MRHnJdC.jpg", cook_id: david.id)
+chilli = Meal.create(name: "Chilli", description: "Delicious chilli", expiration: Date.today + 3, img_url: "http://i.imgur.com/puKjKAk.jpg", cook_id: mo.id)
 chicken = Meal.create(name: "Chicken", description: "Delicious chicken with chocolate frosting", expiration: Date.today + 5, img_url: "http://i.imgur.com/6amXGTM.jpg", cook_id: andrew.id)
 
 5.times do

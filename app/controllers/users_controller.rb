@@ -1,8 +1,20 @@
 class UsersController < ApplicationController
-  def index
+
+  def login
     if logged_in?
       redirect_to current_user
     end
+  end
+
+  def index
+    @user = current_user
+    @meal_ids = Portion.joins(:meal).where(eater_id: @user.id).pluck(:meal_id).uniq
+    # @portions = Portion.includes(:meals).where(eater_id: current_user.id).group(:meal_id).count
+
+  end
+
+  def cook
+    @meals = current_user.meals
   end
 
   def new
@@ -21,7 +33,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(current_user.id)
+    if logged_in?
+      @user = User.find(current_user.id)
+    else
+      redirect_to root_path
+    end
   end
 
   def update
@@ -35,7 +51,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   private

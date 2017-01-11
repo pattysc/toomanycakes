@@ -18,6 +18,10 @@ class Meal < ApplicationRecord
     end
   end
 
+  def made_by
+    "made by #{User.find(self.cook_id).name}"
+  end
+
   def return_portions(num, user_id)
     portions.where(eater_id: user_id).limit(num).each do |portion|
       portion.eater_id = nil

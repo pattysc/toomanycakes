@@ -25,9 +25,9 @@
       <ul>
         <% group.meals.each do |meal|  %>
           <% if meal.portions_all_taken?  %>
-            <li> <%=link_to meal.name, meal_path(meal) %> made by <%= User.find(meal.cook_id).name %>- ALL CLAIMED! </li>
+            <li> <%=link_to meal.name, meal_path(meal) %> <%= meal.made_by %> - ALL CLAIMED! </li>
           <% else %>
-            <li> <%=link_to meal.name, meal_path(meal) %> made by <%= User.find(meal.cook_id).name %> </li>
+            <li> <%=link_to meal.name, meal_path(meal) %> <%= meal.made_by %> </li>
           <% end %>
         <% end %>
       </ul>

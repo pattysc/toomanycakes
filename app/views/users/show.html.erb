@@ -12,6 +12,8 @@
 <%= link_to "Submit a new meal!", new_meal_path %>
 <br />
 <%= link_to "Make a new group!", new_group_path %>
+<br />
+<%= link_to "See all groups!", groups_path %>
 
 <br><br />
 ===================================
@@ -31,8 +33,13 @@
   <br />
 </p>
 
-<% end %>
-
 <br><br><br>
 
-<p> <%= link_to "Edit", edit_user_path %> || <%= link_to "Log Out", session_path, method: :delete %></p>
+<p> <%= link_to "Edit", edit_user_path %> || <%= link_to "Log Out", logout_path %></p>
+
+<% else %>
+
+<p> <%= link_to "Log Out", logout_path %></p>
+
+
+<% end %>

@@ -6,7 +6,7 @@ class PortionsController < ApplicationController
     set_eater_id(@meal, params[:number])
     @meal.save
     flash[:notice] = "You claimed #{params[:number]} portion(s) of #{@meal.name}"
-    redirect_to meal_path(@meal)
+    redirect_to claimed_meals_path(current_user.id)
   end
 
   def set_eater_id(meal, num)
@@ -22,7 +22,7 @@ class PortionsController < ApplicationController
     @user = User.find(params[:id])
     @meal.return_portions(params["number_returns"], @user.id)
     flash[:notice] = "You returned #{params["number_returns"]} portion(s) of #{@meal.name}"
-    redirect_to claimed_meals_path(@user)
+    redirect_to claimed_meals_path(current_user.id)
   end
 
   private

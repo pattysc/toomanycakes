@@ -7,6 +7,18 @@
 
 <%= link_to "All my claimed meals", users_path %>
 
+<br>
+<h3>Groups</h3>
+<% @user.groups.each do |group| %>
+  <%= link_to group.name, group_path(group) %>
+<% end %>
+<br>
+<h3>Meals</h3>
+<% @user.groups.each do |group| %>
+  <% group.meals.each do |meal|  %>
+    <%=link_to meal.name, meal_path(meal)  %>
+  <% end %>
+<% end %>
 <br />
 
 <%= link_to "All my cooked meals", cook_path %>

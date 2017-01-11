@@ -1,6 +1,9 @@
-<% flash[:notice].each do |messages| %>
-  <%= messages %>
+<% if flash[:notice] %>
+  <% flash[:notice].each do |messages| %>
+    <%= messages %>
+  <% end %>
 <% end %>
+
 
 <%= form_tag '/sessions' do %>
   <%= label_tag :name %>

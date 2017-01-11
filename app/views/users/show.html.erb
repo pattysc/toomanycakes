@@ -16,22 +16,34 @@
 <%= link_to "See all groups!", groups_path %>
 
 <br><br />
-===================================
-<p>
-  <h3>Groups I'm part of</h3>
-  <% @user.groups.each do |group| %>
-    <%= link_to group.name, group_path(group) %>
-  <% end %>
-  <br>
+  ===================================
+  <div>
+    <h2> My Groups </h2>
+    <% @user.groups.each do |group| %>
+      <h3><%= link_to group.name, group_path(group) %></h3>
 
-  <h3>Meals in this group</h3>
-  <% @user.groups.each do |group| %>
-    <% group.meals.each do |meal|  %>
-      <%=link_to meal.name, meal_path(meal)  %>
+      <ul>
+        <% group.meals.each do |meal|  %>
+          <li> <%=link_to meal.name, meal_path(meal)  %> </li>
+        <% end %>
+      </ul>
+
+
     <% end %>
+  </div>
+
+  <p> <%= link_to "Edit", edit_user_path %> || <%= link_to "Log Out", session_path, method: :delete %></p>
+
+
+  <% else %>
+
+  <h2> Groups </h2>
+
+  <% @user.groups.each do |group| %>
+    <h3><%= link_to group.name, group_path(group) %></h3>
+
   <% end %>
-  <br />
-</p>
+
 
 <br><br><br>
 
@@ -43,3 +55,4 @@
 
 
 <% end %>
+

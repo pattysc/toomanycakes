@@ -1,6 +1,6 @@
 <% if flash[:notice] %>
   <% flash[:notice].each do |messages| %>
-    <%= messages %>
+    <br><%= messages %>
   <% end %>
 <% end %>
 
@@ -25,3 +25,5 @@
   <br><br>
   <%= f.submit %>
 <% end %>
+
+<p><%= link_to "Log In" </p>

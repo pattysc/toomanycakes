@@ -24,14 +24,4 @@ class Meal < ApplicationRecord
       portion.save
     end
   end
-
-  #
-  # def set_eater_id(num)
-  #   num.to_i.times do
-  #     portion = portions.where(eater_id: nil).first
-  #     portion.eater_id = User.all.first.id #[:user_id]
-  #     portion.save
-  #   end
-  # end
-
 end

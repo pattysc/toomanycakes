@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def claimed_meals
     @user = current_user
-    @meal_ids = @user.all_my_meals
+    @meal_ids = @user.all_my_claimed_meals
     #can make this a user method
     #that makes it an array of instances
     #for each meal do...

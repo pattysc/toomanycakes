@@ -19,12 +19,11 @@
   ===================================
   <div>
     <div id='recommendations'>
-      Recommendations will go here.
-
+      <h2> Recommendations </h2>
+      <% current_user.recommendations.each do |x| %>
+        <p><%= link_to x.name, meal_path() %></p>
+      <% end %>
     </div>
-
-
-
 
     <h2> My Groups </h2>
     <% @user.groups.each do |group| %>

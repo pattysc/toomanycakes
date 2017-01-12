@@ -11,8 +11,9 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @user = User.find(session[:user_id])
+    @group.admin_id = @user.id
     if @group.save
-        @user = User.find(session[:user_id])
         @group.users << @user
         flash[:notice] = "You successfully created the #{@group.name} group"
         redirect_to group_path(@group)
@@ -24,6 +25,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @admin = User.find(@group.admin_id)
   end
 
   def join
@@ -39,18 +41,34 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    @group.update(group_params)
+    if @group.valid?
+      redirect_to groups_path
+    else
+      flash[:notice] = @group.erros.full_messages
+      redirect_to edit_group_path
+    end
+  end
+
   def quit
     @group = Group.find(params[:group_id])
     @user = User.find(session[:user_id])
-
     @group.users.delete(@user)
-
     # flash[:notice] = "You left the group.  Tears."
-
     redirect_to group_path(@group)
-
   end
 
+  def destroy
+    Group.find(params[:group_id]).delete
+    flash[:notice] = "You successfully deleted the group"
+    redirect_to groups_path
+  end
 
 
   private

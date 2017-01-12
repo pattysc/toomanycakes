@@ -1,4 +1,4 @@
-<h1>New Meal</h1>
+<h1>Edit <%= @meal.name %> </h1>
 
 <% if flash[:notice] %>
 
@@ -36,5 +36,7 @@
 <br>
 <%= f.text_field :img_url %>
 <br><br>
-<%= submit_tag "Create meal" %>
+<%= submit_tag "Edit meal" %>
 <% end %>
+
+<%= button_to "Delete meal", meal_delete_path(@meal), :method => :delete  %>

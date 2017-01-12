@@ -2,6 +2,8 @@
 
 <h2> <%= @group.name %> </h2>
 <h3> <%= @group.description %> </h3>
+<h4> <%= @admin.name %> </h4>
+
 <br>
 
 <% if !@group.current_user_a_member?(current_user) %>
@@ -18,15 +20,28 @@
 
 <% else %>
 
-<%= form_tag ('/groups/quit') do %>
+  <% if @admin.id == current_user.id  %>
+  ADMIN
+  <br>
+  <br>
+  <%= button_to "Edit Group", edit_group_path(@group), method: :get  %>
+  <br>
+  <br>
 
-<%= hidden_field_tag "group_id", @group.id%>
-<%= submit_tag "Rage Quit" %>
+  <%= form_tag @group, method: :delete do %>
+    <%= hidden_field_tag "group_id", @group.id%>
+    <%= submit_tag "Delete Group" %>
 
+  <% end %>
+
+  <% else %>
+    <%= form_tag ('/groups/quit') do %>
+    <%= hidden_field_tag "group_id", @group.id%>
+    <%= submit_tag "Rage Quit" %>
+    <% end %>
+  <% end %>
 <% end %>
 
-
-<% end %>
 
 
 <br>

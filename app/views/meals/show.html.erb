@@ -1,25 +1,32 @@
 <%= flash[:notice] %>
-<h1> <%= @meal.name %> </h1> <br />
 
+<h1> <%= @meal.name %> </h1>
+<br>
 <img src="<%= @meal.img_url %>"/>
+<h3> made by <%= link_to @cook.name, @cook %> </h3>
+<br>
 
-<h3> by <%= @cook.name %> </h3> <br />
+--- <i> <%= @meal.portion_text %> available </i> ---
+<br>
+<br>
 
---- <i> <%= @meal.portion_text %> available </i> --- <br />
+Description: <%= @meal.description %>
+<br>
+Category: <%= @meal.category %>
+<br>
+<br>
 
-<%= @meal.description %> <br />
+Claim it by: <%= @meal.expiration.strftime("%A, %B %d, %Y") %>
+<br>
 
-Claim it by: <%= @meal.expiration %> <br />
+===========================
+<br>
 
-=========================== <br />
-
-Want to claim this meal?<br />
+<h4> Want to claim this meal? </h4>
 
 <%= form_tag ('/portions') do %>
-
-<%= select_tag :number, options_for_select(1..@meal.number_of_portions_available) %> portion(s)
-
-<%= hidden_field_tag "user_id", @user.id%>
-<%= hidden_field_tag "meal_id", @meal.id %>
-<%= submit_tag "Claim this meal!" %>
+  <%= select_tag :number, options_for_select(1..@meal.number_of_portions_available) %> portion(s)
+  <%= hidden_field_tag "user_id", @user.id%>
+  <%= hidden_field_tag "meal_id", @meal.id %>
+  <%= submit_tag "Claim this meal!" %>
 <% end %>

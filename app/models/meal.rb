@@ -38,4 +38,17 @@ class Meal < ApplicationRecord
     User.find(self.cook_id)
   end
 
+  def self.available_categories
+    # eventually move this to a config file
+    # and then eventually move categories to their own table
+    [
+      ['Seafood',     'seafood'],
+      ['Gluten-Free', 'gluten-free'],
+      ['Vegan',       'vegan'],
+      ['Main Course', 'main'],
+      ['Dessert',     'dessert']
+    ]
+  end
+
+
 end

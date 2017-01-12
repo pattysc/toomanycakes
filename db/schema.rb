@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111203919) do
+ActiveRecord::Schema.define(version: 20170112160139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170111203919) do
     t.datetime "expiration"
     t.string   "img_url"
     t.integer  "cook_id"
+    t.string   "category"
     t.index ["cook_id"], name: "index_meals_on_cook_id", using: :btree
   end
 

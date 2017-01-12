@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-patty = User.create(name: "Patty", password: "1234", address: "NYC", fullname: "Patty Santa Cruz")
-mo = User.create(name: "Mohammed", password: "4321", address: "NYC", fullname: "Mo")
-david = User.create(name: "David", password: "1234", address: "NYC", fullname: "David Weinstein")
-andrew = User.create(name: "Andrew", password: "4321", address: "NYC", fullname: "Anddrew Nease")
+patty = User.create(name: "Patty", password: "1234", address: "10129", fullname: "Patty Santa Cruz")
+mo = User.create(name: "Mohammed", password: "4321", address: "11368", fullname: "Mo")
+david = User.create(name: "David", password: "1234", address: "10075", fullname: "David Weinstein")
+andrew = User.create(name: "Andrew", password: "4321", address: "11222", fullname: "Anddrew Nease")
 
 choc_cake = Meal.create(name: "Chocolate Cake", description: "Delicious chocolate cake with chocolate frosting", expiration: Date.today + 4, img_url: "http://i.imgur.com/Vmcl79Z.jpg", cook_id: patty.id)
 van_cake = Meal.create(name: "Vanilla Cheesecake", description: "Delicious vanilla cheesecake with vanilla frosting", expiration: Date.today + 1, img_url: "http://i.imgur.com/MRHnJdC.jpg", cook_id: patty.id)

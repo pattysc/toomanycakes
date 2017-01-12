@@ -1,5 +1,15 @@
 <h1>New Meal</h1>
 
+<% if flash[:notice] %>
+
+  <% flash[:notice].each do |error| %>
+  <%= error %>.
+  <br>
+  <% end %>
+<% end %>
+<br>
+
+
 <%= form_for @meal do |f| %>
 
 <%= f.label :name %>
@@ -12,7 +22,7 @@
 <%= select_tag "meal[number]", options_for_select(1..10) %>
 
 <%= f.label :expiration %>
-<%= f.date_select :expiration %>
+<%= f.date_field :expiration, min: Date.tomorrow, max: Date.today + 7 %>
 
 <%= f.label "imgur URL" %>
 <%= f.text_field :img_url %>

@@ -16,6 +16,7 @@ class MealsController < ApplicationController
       @meal.make_portions(params[:meal][:number])
       redirect_to meal_path(@meal)
     else
+      flash[:notice] = @meal.errors.full_messages
       redirect_to new_meal_path
     end
   end

@@ -1,5 +1,14 @@
 <h1>Create a new group</h1>
 
+  <% if flash[:notice] %>
+  <% flash[:notice].each do |error| %>
+  <%= error %>.
+  <br>
+  <% end %>
+  <% end %>
+<br>
+
+
 <div id='form_container'>
 <%= form_for @group do |f| %>
   <div>

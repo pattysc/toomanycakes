@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
         flash[:notice] = "You successfully created the #{@group.name} group"
         redirect_to group_path(@group)
     else
-      flash[:notice] = "You were not able to create the #{@group.name} group"
+      flash[:notice] = @group.errors.full_messages
       redirect_to new_group_path
     end
   end

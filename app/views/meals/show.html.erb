@@ -3,9 +3,9 @@
 
 <img src="<%= @meal.img_url %>"/>
 
-<h3> by <%= User.find(@meal.cook_id).name %> </h3> <br />
+<h3> by <%= @cook.name %> </h3> <br />
 
---- <i> <%= @meal.number_of_portions_available %> portion(s) available </i> --- <br />
+--- <i> <%= @meal.portion_text %> available </i> --- <br />
 
 <%= @meal.description %> <br />
 

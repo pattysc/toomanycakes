@@ -7,7 +7,8 @@
   <p> "<%= @meal.description %>" </p>
 
   <p> <%= Portion.number_of_claimed_portions(meal_id, @user.id) %> portion(s)</p>
-  <% cook = User.find(@meal.cook_id) %>
+
+  <% cook = @meal.get_cook %>
 
   <p> claimed from <%= link_to "#{cook.name}", cook %> </a></p>
 

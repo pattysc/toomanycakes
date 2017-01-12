@@ -8,7 +8,10 @@ class UsersController < ApplicationController
 
   def claimed_meals
     @user = current_user
-    @meal_ids = @user.portions.pluck(:meal_id).uniq
+    @meal_ids = @user.all_my_meals
+    #can make this a user method
+    #that makes it an array of instances
+    #for each meal do...
   end
 
   def cook

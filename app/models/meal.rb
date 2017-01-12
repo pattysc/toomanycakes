@@ -6,6 +6,11 @@ class Meal < ApplicationRecord
     portions.where(eater_id: nil).count
   end
 
+  def portion_text
+    num = number_of_portions_available
+    num == 1 ? "#{num.humanize} portion" : "#{num.humanize} portions"
+  end
+
   def make_portions(num)
     num.to_i.times { Portion.create(meal_id: self.id) }
   end
@@ -19,7 +24,7 @@ class Meal < ApplicationRecord
   end
 
   def made_by
-    "made by #{User.find(self.cook_id).name}"
+    "made by #{self.get_cook.name}"
   end
 
   def return_portions(num, user_id)
@@ -28,4 +33,9 @@ class Meal < ApplicationRecord
       portion.save
     end
   end
+
+  def get_cook
+    User.find(self.cook_id)
+  end
+
 end

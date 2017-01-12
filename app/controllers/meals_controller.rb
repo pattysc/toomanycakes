@@ -5,6 +5,7 @@ class MealsController < ApplicationController
     # @user = User.find(session[:user_id])
     @user = current_user
     @meal = Meal.find(params[:id])
+    @cook = @meal.get_cook
   end
 
   def create

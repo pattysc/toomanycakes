@@ -16,7 +16,9 @@ class User < ApplicationRecord
 
   def recommendations
     # this gets the most common category from all the claimed portions
-    category = portions.joins(:meal).group(:category).count.max_by{|k,v| v}.first
+    unless portions.empty?
+      category = portions.joins(:meal).group(:category).count.max_by{|k,v| v}.first
+    end
 
     # these are meal instances in an array
     meals = self.groups.collect do |group|

@@ -8,20 +8,30 @@ class User < ApplicationRecord
   has_secure_password
 
 
-  def all_my_meals
+  def all_my_claimed_meals
     portions.pluck(:meal_id).uniq
   end
 
   def recommendations
+    # this gets the most common category from all the claimed portions
+    category = portions.joins(:meal).group(:category).count.max_by{|k,v| v}.first
 
-    # activeRecord query
-    # look at all the user's claimed portions category (through the link to meal)
-    # count the number of portions that match a category [seafood: 12, main: 20, etc.]
-    # find the maximum of those counts
+    # these are meal instances in an array
+    meals = self.groups.collect do |group|
+      group.meals.where(category: category)
+    end
+    meals.flatten!.uniq!
 
-    
+    if meals.length > 3
+      # shrink it back down to 3 randomly
+      random = (1...meals.length).to_a.shuffle
 
+      random_meals = random.collect { |idx| meals[idx] }
 
+      meals = (0..2).collect { |idx| random_meals[idx] }
+    end
+
+    meals.compact
   end
 
 

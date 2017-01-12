@@ -26,6 +26,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      @group = Group.find_by(name: params[:user][:address])
+
+        if @group
+          UserGroup.create(user_id: @user.id, group_id: @group.id )
+        else
+          @group = Group.new(name: params[:user][:address], description: "Your local group", admin_id: @user.id)
+          @group.save
+          UserGroup.create(user_id: @user.id, group_id: @group.id )
+        end
+
       redirect_to current_user
     else
       flash[:notice] = @user.errors.full_messages

@@ -2,6 +2,9 @@ class Meal < ApplicationRecord
   belongs_to :cook, :class_name => 'User'
   has_many :portions
 
+  validates :name, presence: true, length: {maximum: 25}
+  validates :description, presence: true, length: {maximum: 50}
+
   def number_of_portions_available
     portions.where(eater_id: nil).count
   end

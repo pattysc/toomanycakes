@@ -3,7 +3,7 @@
 <h1> <%= @meal.name %> </h1>
 <br>
 <img src="<%= @meal.img_url %>"/>
-<h3> by <%= link_to @cook.name, @cook %> </h3>
+<h3> made by <%= link_to @cook.name, @cook %> </h3>
 <br>
 
 --- <i> <%= @meal.portion_text %> available </i> ---
@@ -16,7 +16,7 @@ Category: <%= @meal.category %>
 <br>
 <br>
 
-Claim it by: <%= @meal.expiration %>
+Claim it by: <%= @meal.expiration.strftime("%A, %B %d, %Y") %>
 <br>
 
 ===========================

@@ -10,6 +10,7 @@ patty = User.create(name: "Patty", password: "1234", address: "10129", fullname:
 mo = User.create(name: "Mohammed", password: "4321", address: "11368", fullname: "Mo")
 david = User.create(name: "David", password: "1234", address: "10075", fullname: "David Weinstein")
 andrew = User.create(name: "Andrew", password: "4321", address: "11222", fullname: "Anddrew Nease")
+christi = User.create(name: "Christi", password: "4321", address: "10129", fullname: "christi reid")
 
 choc_cake = Meal.create(name: "Chocolate Cake", description: "Delicious chocolate cake with chocolate frosting", category: "dessert", expiration: Date.today + 4, img_url: "http://i.imgur.com/Vmcl79Z.jpg", cook_id: patty.id)
 van_cake = Meal.create(name: "Vanilla Cheesecake", description: "Delicious vanilla cheesecake with vanilla frosting", category: "dessert", expiration: Date.today + 1, img_url: "http://i.imgur.com/MRHnJdC.jpg", cook_id: patty.id)
@@ -23,9 +24,9 @@ soup = Meal.create(name: "Vegetable Soup", description: "Leftover soup", categor
 2.times { Portion.create(meal_id: chicken.id) }
 10.times { Portion.create(meal_id: soup.id) }
 
-flatiron = Group.create(name: "Flatiron School", description: "Here we are.")
-makeawish = Group.create(name: "Make-a-Wish", description: "Good peeps.")
-dogpark = Group.create(name: "Madison Square Dog Park", description: "Woof party")
+flatiron = Group.create(name: "Flatiron School", description: "Here we are.", admin_id: 1)
+makeawish = Group.create(name: "Make-a-Wish", description: "Good peeps.", admin_id: 2)
+dogpark = Group.create(name: "Madison Square Dog Park", description: "Woof party", admin_id: 4)
 
 flatiron.users << patty
 flatiron.users << andrew

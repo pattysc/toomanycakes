@@ -26,13 +26,13 @@ class User < ApplicationRecord
     end
     meals.flatten!.uniq!
 
-    if meals.length > 3
+    if meals.length > 5
       # shrink it back down to 3 randomly
       random = (1...meals.length).to_a.shuffle
 
       random_meals = random.collect { |idx| meals[idx] }
 
-      meals = (0..2).collect { |idx| random_meals[idx] }
+      meals = (0..4).collect { |idx| random_meals[idx] }
     end
 
     meals.compact

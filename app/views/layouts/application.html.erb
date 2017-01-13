@@ -7,17 +7,21 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <nav>
       <div class="nav-wrapper">
 
-        <a href="/" class="brand-logo"><%= image_tag "cake", :class => "style_logo left-align" %></a>
+        <a href="/" class="brand-logo"><%= image_tag "cake", class: "style_logo left-align" %></a>
         <% if logged_in? %>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html">Cooked Meals</a></li>
-            <li><a href="collapsible.html">Claimed Meals</a></li>
-            <li><a href="badges.html">Groups</a></li>
+            <li><%= link_to "Claimed Meals", claimed_meals_path(current_user.id) %></li>
+            <li><%= link_to "Cooked Meals", cook_path %></li>
+            <li><%= link_to "Groups", groups_path %></li>
+            <li><%= link_to "Log Out", logout_path %></li>
+          </ul>
+        <% else %>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><%= link_to "Log In", root_path %></li>
           </ul>
         <% end %>
       </div>

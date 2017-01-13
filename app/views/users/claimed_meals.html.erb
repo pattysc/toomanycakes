@@ -1,41 +1,33 @@
 <div class="container">
     <%= flash[:notice] %>
-
-    <div class="row">
-        <div class="col s12">
-            <h2> Claimed meals </h2>
-        </div>
-    </div>
+    <h2><span class="red-text text-lighten-2">Claimed meals</span></h2>
 
     <% @meal_ids.each do |meal_id|%>
-
-        <div class="row">
-              <div class="col s6">
-                  <img class="center-align" src="<%= Meal.find(meal_id).img_url %>"/>
-              </div>
-
-              <div class="col s6">
-                  <% @meal = Meal.find(meal_id) %>
-
-                  <b><p> <%= link_to "#{@meal.name}", @meal %> </p></b>
-                  <p> "<%= @meal.description %>" </p>
-
-                  <p> <%= Portion.number_of_claimed_portions(meal_id, @user.id) %> portion(s)</p>
-
-                  <% cook = @meal.get_cook %>
-
-                  <p> claimed from <%= link_to "#{cook.name}", cook %> </p>
-
-                  <%= form_tag('/portions/return') do %>
-                  <p> Return
-                      <%= select_tag "number_returns", options_for_select(1..Portion.number_of_claimed_portions(meal_id, @user.id)) %>
-                      portion(s)
-                      <%= hidden_field_tag "id", @user.id%>
-                      <%= hidden_field_tag "meal_id", @meal.id %>
-                      <%= submit_tag "Return!" %>
-                  </p>
-                  <% end %>
-              </div>
+      <% meal = Meal.find(meal_id) %>
+      <div class="card">
+        <div class="card-image">
+          <img src="<%= meal.img_url %>">
+          <span class="card-title"><%= meal.name%></span>
         </div>
+        <div class="card-content">
+          <p><%= meal.description %></p>
+          <% meal = Meal.find(meal_id) %>
+          <p> <%= Portion.number_of_claimed_portions(meal_id, @user.id) %> portion(s)</p>
+          <% cook = meal.get_cook %>
+          <p> claimed from <%= link_to "#{cook.name}", cook %> </p>
+          <%= form_tag('/portions/return') do %>
+            <p> Return
+              <%= select_tag "number_returns", options_for_select(1..Portion.number_of_claimed_portions(meal_id, @user.id)) %>
+              portion(s)
+              <%= hidden_field_tag "id", @user.id%>
+              <%= hidden_field_tag "meal_id", meal.id %>
+              <%= submit_tag "Return!" %>
+            </p>
+          <% end %>
+        </div>
+        <div class="card-action">
+          <%= link_to "Go To Meal", meal %>
+        </div>
+      </div>
     <% end %>
 </div>

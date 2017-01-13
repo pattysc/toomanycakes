@@ -4,8 +4,9 @@
   <% end %>
 <% end %>
 
+<h1 class="user_center">Log In</h1>
 
-<%= form_tag '/sessions' do %>
+<%= form_tag '/sessions', class: "form user_center" do %>
   <%= label_tag :name %>
   <br>
   <%= text_field_tag 'user[name]' %>
@@ -14,9 +15,9 @@
   <br>
   <%= password_field_tag 'user[password]' %>
   <br><br>
-  <%= submit_tag 'Sign In' %>
+  <%= submit_tag 'Sign In', class: "waves-effect waves-light btn" %>
 <% end %>
 
 <br><br>
 
-<%= link_to "Sign Up", new_user_path %>
+<%= link_to "Sign Up", new_user_path, class: "user_center" %>

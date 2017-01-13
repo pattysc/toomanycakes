@@ -54,4 +54,14 @@ describe Meal do
 
     expect(cookies.return_portions(3, david.id).count).to eq(cookies.number_of_portions_available)
   end
+
+  it "can tell if the meal is past its expiration / sabe si la comida ya pasaron la fecha de expiracion" do
+    @bad_meal = Meal.create(name: "im bad",
+                description: "The bad",
+                expiration: (Date.today - 2),
+                cook_id: david.id)
+
+    expect(@bad_meal).not_to be_fresh
+  end
+
 end

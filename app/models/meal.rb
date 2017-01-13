@@ -5,6 +5,10 @@ class Meal < ApplicationRecord
   validates :name, presence: true, length: {maximum: 25}
   validates :description, presence: true, length: {maximum: 50}
 
+  def fresh?
+    self.expiration > Date.today
+  end
+
   def number_of_portions_available
     portions.where(eater_id: nil).count
   end

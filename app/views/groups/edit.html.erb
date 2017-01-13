@@ -8,21 +8,16 @@
   <% end %>
 <br>
 
-  <% if current_user.id == @group.admin_id %>
-
-
-    <div id='form_container'>
-    <%= form_for @group do |f| %>
-      <div>
-     <%= f.label :name %>
-     <%= f.text_field :name %>
-      </div>
-      <div>
-     <%= f.label :description %>
-     <%= f.text_field :description %>
-     </div>
-     <%= f.submit "Create" %>
-    <% end %>
-    </div>
-
+<div id='form_container'>
+<%= form_for @group do |f| %>
+  <div>
+ <%= f.label :name %>
+ <%= f.text_field :name %>
+  </div>
+  <div>
+ <%= f.label :description %>
+ <%= f.text_field :description %>
+ </div>
+ <%= f.submit "Edit this group" %>
 <% end %>
+</div>

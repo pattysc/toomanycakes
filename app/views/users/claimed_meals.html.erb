@@ -1,6 +1,6 @@
 <div class="container">
     <%= flash[:notice] %>
-    <h2><span class="red-text text-lighten-2">Claimed meals</span></h2>
+    <h2><span class="red-text text-lighten-2">Claimed Meals</span></h2>
 
     <% @meal_ids.each do |meal_id|%>
       <% meal = Meal.find(meal_id) %>

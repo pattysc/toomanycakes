@@ -12,6 +12,7 @@
  *
  *= require_self
  */
+ @import "materialize";
 
 .style_logo {
   display: block;
@@ -20,8 +21,6 @@
   position: relative;
 
 }
-
-@import "materialize";
 
 select {
   display: block;

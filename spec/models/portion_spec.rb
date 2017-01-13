@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User do
+describe Portion do
 
   let(:patty) { User.create(name: "Patty",
                         password: '1234',
@@ -23,9 +23,10 @@ describe User do
 
 
 
-  it "can create an array of all the meal instances" do
+  it "can count the number of claimed portions" do
     3.times { Portion.create(meal_id: cake.id, eater_id: david.id) }
-    test = david.portions.first.meal_id
-    expect(david.all_my_claimed_meals).to include test
+
+    expect(Portion.number_of_claimed_portions(cake.id, david.id)).to eq(3)
   end
+
 end

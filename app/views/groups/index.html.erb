@@ -3,5 +3,7 @@
 <% @groups.each do |group| %>
   <div class="card-panel" >
     <%= link_to group.name, group_path(group)  %>
+    <br>
+    <%= group.description %>
   </div>
 <% end %>

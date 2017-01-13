@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ @import "materialize";
 
 .style_logo {
   display: block;
@@ -22,4 +23,6 @@
 
 }
 
-@import "materialize";
+select {
+  display: block;
+}

@@ -1,11 +1,7 @@
 <%= flash[:notice] %>
-
-<ul>
-
+<h2><span class="red-text text-lighten-2">All Groups</span></h2>
 <% @groups.each do |group| %>
-
-
-<li> <%= link_to group.name, group_path(group)  %> </li>
-
+  <div class="card-panel" >
+    <%= link_to group.name, group_path(group)  %>
+  </div>
 <% end %>
-</ul>

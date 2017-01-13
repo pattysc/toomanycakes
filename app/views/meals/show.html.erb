@@ -1,48 +1,37 @@
+<div class="col s12 m7">
+    <h2 class="header">Horizontal Card</h2>
+    <div class="card horizontal">
+      <div class="card-image">
+        <% if @meal.img_url.nil? %>
+          <%= image_tag "cake" %>
+        <% else %>
+          <%= image_tag "#{@meal.img_url}" %>
+        <% end %>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p><%= @meal.name %>  </p>
+          <p> made by <%= link_to @cook.name, @cook %></p>
+          <p><%= @meal.description %></p>
+          <% if @meal.fresh? %>
+              Claim it by: <%= @meal.expiration.strftime("%A, %B %d, %Y") %>
+              <br>
 
-    <div class="row">
-         <div class="col s12">
-           <h1 class="center-align"><%= @meal.name %>  </h1>
-           <h2 class="center-align"> made by <%= link_to @cook.name, @cook %></h2>
-         </div>
-    </div>
+              <h5> Want to claim this meal? </h5>
 
-    <div class="row">
-          <div class="col s6">
-            <% if @meal.img_url.empty? %>
-              <%= image_tag "cake" %>
-            <% else %>
-              <%= image_tag "#{@meal.img_url}" %>
-            <% end %>
-
-
-          </div>
-
-         <div class="col s6">
-
-           Description: <%= @meal.description %>
-           <br>
-           Category: <%= @meal.category %>
-           <br>
-           <br>
-           --- <i> <%= @meal.portion_text %> available </i> ---
-           <br>
-           <br>
-           <% if @meal.fresh? %>
-               Claim it by: <%= @meal.expiration.strftime("%A, %B %d, %Y") %>
-               <br>
-
-               <h5> Want to claim this meal? </h5>
-
-               <%= form_tag ('/portions') do %>
-                 <%= select_tag :number, options_for_select(1..@meal.number_of_portions_available) %> portion(s)
-                 <%= hidden_field_tag "user_id", @user.id%>
-                 <%= hidden_field_tag "meal_id", @meal.id %>
-                 <br>
-                 <%= submit_tag "Claim this meal!" %>
-               <% end %>
+              <%= form_tag ('/portions') do %>
+                <%= select_tag :number, options_for_select(1..@meal.number_of_portions_available) %> portion(s)
+                <%= hidden_field_tag "user_id", @user.id%>
+                <%= hidden_field_tag "meal_id", @meal.id %>
+                <br>
+                <%= submit_tag "Claim this meal!" %>
+              <% end %>
           <% else %>
-              THIS MEAL HAS EXPIRED
-           <% end %>
-           <br>
-         </div>
+             THIS MEAL HAS EXPIRED
+          <% end %>
+          <p>Category: <%= @meal.category %><p>
+          --- <i> <%= @meal.portion_text %> available </i> ---
+        </div>
+      </div>
     </div>
+  </div>

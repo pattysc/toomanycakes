@@ -1,15 +1,22 @@
-all the meals ive cooked
-
-<br> <br>
-
 <% @meals.each do |meal| %>
   <% if meal.fresh? %>
-    <% if meal.img_url.empty? %>
-      <%= image_tag "cake" %>
-    <% else %>
-      <%= image_tag "#{meal.img_url}" %>
-    <% end %>
-    <%= link_to "#{meal.name}", meal %> || <%= link_to "Edit this meal", edit_meal_path(meal) %>
+    <div class="card medium">
+      <div class="card-image">
+        <% if meal.img_url.blank? %>
+          <%= image_tag "cake" %>
+        <% else %>
+          <%= image_tag "#{meal.img_url}" %>
+        <% end %>
+        <span class="card-title">Card Title</span>
+      </div>
+      <div class="card-content">
+        <p>I am a very simple card. I am good at containing small bits of information.
+        I am convenient because I require little markup to use effectively.</p>
+      </div>
+      <div class="card-action">
+        <%= link_to "Go To Meal", meal %>
+        <%= link_to "Edit", edit_meal_path(meal) %>
+      </div>
+    </div>
   <% end %>
-  <br>
 <% end %>

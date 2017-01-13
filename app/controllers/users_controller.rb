@@ -44,11 +44,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if logged_in?
-      @user = User.find(current_user.id)
-    else
-      redirect_to root_path
-    end
+    @user = User.find(current_user.id)
+    redirect_to root_path unless current_user.id == params[:id].to_i
   end
 
   def update

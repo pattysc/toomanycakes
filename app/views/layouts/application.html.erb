@@ -11,7 +11,8 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a href="/" class="brand-logo">T M C</a>
+
+        <a href="/" class="brand-logo"><%= image_tag "cake", :class => "style_logo left-align" %></a>
         <% if logged_in? %>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="sass.html">Cooked Meals</a></li>

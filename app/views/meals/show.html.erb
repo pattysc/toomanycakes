@@ -2,7 +2,7 @@
     <h2 class="header">Horizontal Card</h2>
     <div class="card horizontal">
       <div class="card-image">
-        <% if @meal.img_url.nil? %>
+        <% if @meal.img_url.blank? %>
           <%= image_tag "cake" %>
         <% else %>
           <%= image_tag "#{@meal.img_url}" %>

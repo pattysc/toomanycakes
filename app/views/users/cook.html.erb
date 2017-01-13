@@ -3,6 +3,13 @@ all the meals ive cooked
 <br> <br>
 
 <% @meals.each do |meal| %>
-  <%= link_to "#{meal.name}", meal %> || <%= link_to "Edit this meal", edit_meal_path(meal) %>
+  <% if meal.fresh? %>
+    <% if meal.img_url.empty? %>
+      <%= image_tag "cake" %>
+    <% else %>
+      <%= image_tag "#{meal.img_url}" %>
+    <% end %>
+    <%= link_to "#{meal.name}", meal %> || <%= link_to "Edit this meal", edit_meal_path(meal) %>
+  <% end %>
   <br>
 <% end %>

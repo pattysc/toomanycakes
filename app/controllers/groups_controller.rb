@@ -43,6 +43,7 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
+    redirect_to root_path unless current_user.id == @group.admin_id
   end
 
   def update

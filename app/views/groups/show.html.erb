@@ -2,7 +2,7 @@
 
 <h2> <%= @group.name %> </h2>
 <h3> <%= @group.description %> </h3>
-<h4> <%= @admin.name %> </h4>
+<p> <%= @admin.name %> is the admin </p>
 
 <br>
 
@@ -19,7 +19,6 @@
 
 
 <% else %>
-
   <% if @admin.id == current_user.id  %>
   ADMIN
   <br>
@@ -28,18 +27,32 @@
   <br>
   <br>
 
-  <%= form_tag @group, method: :delete do %>
-    <%= hidden_field_tag "group_id", @group.id%>
-    <%= submit_tag "Delete Group" %>
+    <%= form_tag @group, method: :delete do %>
+      <%= hidden_field_tag "group_id", @group.id%>
+      <%= submit_tag "Delete Group" %>
 
-  <% end %>
+    <% end %>
 
   <% else %>
-    <%= form_tag ('/groups/quit') do %>
-    <%= hidden_field_tag "group_id", @group.id%>
-    <%= submit_tag "Rage Quit" %>
+      <%= form_tag ('/groups/quit') do %>
+      <%= hidden_field_tag "group_id", @group.id%>
+      <%= submit_tag "Rage Quit" %>
+      <% end %>
+  <% end %>
+  <br />
+  <b>EAT OUR MEALS</b>
+  <br /><br />
+  <% @group.meals.each do |meal| %>
+    <% if meal.fresh? %>
+      <% if meal.portions_all_taken?  %>
+        <li> <%=link_to meal.name, meal_path(meal) %> <%= meal.made_by %> - ALL CLAIMED! </li>
+      <% else %>
+        <li> <%=link_to meal.name, meal_path(meal) %> <%= meal.made_by %> </li>
+      <% end %>
+        <br />
     <% end %>
   <% end %>
+
 <% end %>
 
 

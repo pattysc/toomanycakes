@@ -13,8 +13,12 @@
 
     <div class="row">
           <div class="col s6">
+            <% if @meal.img_url.empty? %>
+              <%= image_tag "cake" %>
+            <% else %>
+              <%= image_tag "#{@meal.img_url}" %>
+            <% end %>
 
-            <img class="center-align" src="<%= @meal.img_url %>"/>
 
           </div>
 
@@ -28,26 +32,24 @@
            --- <i> <%= @meal.portion_text %> available </i> ---
            <br>
            <br>
-           Claim it by: <%= @meal.expiration.strftime("%A, %B %d, %Y") %>
-           <br>
+           <% if @meal.fresh? %>
+               Claim it by: <%= @meal.expiration.strftime("%A, %B %d, %Y") %>
+               ===========================
+               <br>
 
-           ===========================
-           <br>
+               <h5> Want to claim this meal? </h5>
 
-           <h5> Want to claim this meal? </h5>
-
-           <%= form_tag ('/portions') do %>
-             <%= select_tag :number, options_for_select(1..@meal.number_of_portions_available) %> portion(s)
-             <%= hidden_field_tag "user_id", @user.id%>
-             <%= hidden_field_tag "meal_id", @meal.id %>
-             <br>
-             <%= submit_tag "Claim this meal!" %>
+               <%= form_tag ('/portions') do %>
+                 <%= select_tag :number, options_for_select(1..@meal.number_of_portions_available) %> portion(s)
+                 <%= hidden_field_tag "user_id", @user.id%>
+                 <%= hidden_field_tag "meal_id", @meal.id %>
+                 <br>
+                 <%= submit_tag "Claim this meal!" %>
+               <% end %>
+          <% else %>
+              THIS MEAL HAS EXPIRED
            <% end %>
-
-
-
-
-
+           <br>
          </div>
     </div>
 

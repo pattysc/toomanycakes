@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post 'groups/join', to: 'groups#join', as: 'join'
   post 'groups/quit', to: 'groups#quit', as: 'quit'
 
-
+  get '/about', to: 'users#about', as: "about"
 
 
   #**********************MEALS ROUTING************************

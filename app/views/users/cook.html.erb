@@ -8,11 +8,16 @@
         <% else %>
           <%= image_tag "#{meal.img_url}" %>
         <% end %>
-        <span class="card-title">Card Title</span>
+        <span class="card-title"><%= meal.name %></span>
       </div>
       <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information.
-        I am convenient because I require little markup to use effectively.</p>
+        <p><%= meal.description %></p>
+        <p>Available to: <% meal.groups.each do |group| %>
+          |
+          <%= link_to group.name, group_path(group) %>
+          |
+          <% end %>
+        </p>
       </div>
       <div class="card-action">
         <%= link_to "Go To Meal", meal %>

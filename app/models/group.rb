@@ -1,7 +1,9 @@
 class Group < ApplicationRecord
   has_many :user_groups
   has_many :users, through: :user_groups
-  has_many :meals, through: :users
+  has_many :meal_groups
+  has_many :meals, through: :meal_groups
+#  has_many :meals, through: :users
   belongs_to :admin, :class_name => 'User'
 
   validates :name, presence: true, length: { maximum: 25}

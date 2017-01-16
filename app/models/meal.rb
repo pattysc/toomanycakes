@@ -1,6 +1,8 @@
 class Meal < ApplicationRecord
   belongs_to :cook, :class_name => 'User'
   has_many :portions
+  has_many :meal_groups
+  has_many :groups, through: :meal_groups
 
   validates :name, presence: true, length: {maximum: 25}
   validates :description, presence: true, length: {maximum: 50}
@@ -40,6 +42,12 @@ class Meal < ApplicationRecord
       portion.save
     end
   end
+
+  def eater_ids
+    portions.pluck(:eater_id).compact.uniq
+  end
+
+
 
   def get_cook
     User.find(self.cook_id)

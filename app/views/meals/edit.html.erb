@@ -34,7 +34,16 @@
   <br>
   <%= f.select :category, Meal.available_categories %>
   <br><br>
-  <%= f.label "Image URL" %>
+  <%= f.label :groups %>
+
+  <%= f.collection_check_boxes :group_ids, current_user.groups, :id, :name do |b| %>
+    <div class="collection-check-box">
+      <%= b.check_box %>
+      <%= b.label %>
+    </div>
+  <% end %>
+<br><br>
+<%= f.label "Image URL" %>
   <br>
   <%= f.text_field :img_url %>
   <br><br>

@@ -7,7 +7,11 @@
         <% if meal.fresh? %>
         <div class="card">
           <div class="card-image">
-            <img src="<%= meal.img_url %>">
+            <% if meal.img_url.blank? %>
+              <%= image_tag "cake.png" %>
+            <% else %>
+              <%= image_tag "#{meal.img_url}" %>
+            <% end %>
             <span class="card-title"><%= meal.name%></span>
           </div>
           <div class="card-content">

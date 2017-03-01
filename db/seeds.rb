@@ -70,3 +70,14 @@ makeawish.users << mo
 makeawish.users << christi
 
 dogpark.users << andrew
+
+choc_cake.groups << flatiron
+van_cake.groups << flatiron
+chicken.groups << flatiron
+chili.groups << flatiron
+chili.groups << makeawish
+soup.groups << makeawish
+burrito.groups << flatiron
+expired.groups << flatiron
+lol.groups << flatiron
+torta.groups << flatiron

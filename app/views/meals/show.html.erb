@@ -3,7 +3,7 @@
     <div class="card horizontal">
       <div class="card-image">
         <% if @meal.img_url.blank? %>
-          <%= image_tag "cake" %>
+          <%= image_tag "cake.png" %>
         <% else %>
           <%= image_tag "#{@meal.img_url}" %>
         <% end %>

@@ -4,9 +4,9 @@
     <div class="card medium">
       <div class="card-image">
         <% if meal.img_url.blank? %>
-          <%= image_tag "cake.png", html: {width: "50%"} %>
+          <%= image_tag "cake.png", width: {"50%"} %>
         <% else %>
-          <%= image_tag "#{meal.img_url}", html: {width: "50%"} %>
+          <%= image_tag "#{meal.img_url}", width: {"50%"} %>
         <% end %>
       </div>
       <div class="card-content">

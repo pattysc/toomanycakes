@@ -1,5 +1,5 @@
 <div class="col s12 m7">
-    <h2 class="header">Claimed Meals</h2>
+    <h2 class="header"><%= @meal.name %></h2>
     <div class="card horizontal">
       <div class="card-image">
         <% if @meal.img_url.blank? %>
@@ -10,7 +10,7 @@
       </div>
       <div class="card-stacked">
         <div class="card-content">
-          <p><%= @meal.name %>  </p>
+          <p><%= @meal.name %></p>
           <p> made by <%= link_to @cook.name, @cook %></p>
           <p><%= @meal.description %></p>
           <% if @meal.fresh? %>

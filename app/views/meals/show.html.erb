@@ -1,16 +1,16 @@
 <div class="col s12 m7">
-    <h2 class="header">Horizontal Card</h2>
+    <h2 class="header"><%= @meal.name %></h2>
     <div class="card horizontal">
       <div class="card-image">
         <% if @meal.img_url.blank? %>
-          <%= image_tag "cake" %>
+          <%= image_tag "cake.png" %>
         <% else %>
           <%= image_tag "#{@meal.img_url}" %>
         <% end %>
       </div>
       <div class="card-stacked">
         <div class="card-content">
-          <p><%= @meal.name %>  </p>
+          <p><%= @meal.name %></p>
           <p> made by <%= link_to @cook.name, @cook %></p>
           <p><%= @meal.description %></p>
           <% if @meal.fresh? %>

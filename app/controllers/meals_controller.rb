@@ -8,8 +8,6 @@ class MealsController < ApplicationController
     @cook = @meal.get_cook
     # if meals.groups and current_user.groups have overlapping elements
     # and the current_user is not the eater or cook
-#    @meal.eater_ids
-    # binding.pry
     if (@meal.groups & current_user.groups).empty? && !(@meal.eater_ids.include? current_user.id) && (@meal.cook_id != current_user.id)
       redirect_to root_path
     end

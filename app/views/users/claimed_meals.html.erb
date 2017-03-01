@@ -8,9 +8,9 @@
         <div class="card">
           <div class="card-image">
             <% if meal.img_url.blank? %>
-              <%= image_tag "cake.png" %>
+              <%= image_tag "cake.png", html: {width: "50%"} %>
             <% else %>
-              <%= image_tag "#{meal.img_url}" %>
+              <%= image_tag "#{meal.img_url}", html: {width: "50%"} %>
             <% end %>
             <span class="card-title"><%= meal.name%></span>
           </div>

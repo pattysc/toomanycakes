@@ -53,7 +53,11 @@
         <% if meal.fresh? %>
           <div class="card horizontal">
             <div class="card-image">
-              <img src=<%= meal.img_url %>>
+              <% if meal.img_url.blank? %>
+                <%= image_tag "cake.png", html: {width: "50%"} %>
+              <% else %>
+                <img src=<%= meal.img_url %>>
+              <% end %>
             </div>
             <div class="card-stacked">
               <div class="card-content">
